@@ -20,6 +20,7 @@ class PostFactory extends Factory
             'price' => $this->faker->numberBetween(500, 5000),
             'city' => $this->faker->city(),
             'loctype' => $this->faker->randomElement(['Room', 'Studio', 'Apartment']),
+            'surface' => $this->faker->numberBetween(20, 100),
             'address' => $this->faker->address(),
             'img_path' => $this->faker->imageUrl(),
             'description' => $this->faker->text(),

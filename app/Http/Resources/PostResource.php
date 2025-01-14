@@ -23,6 +23,7 @@ class PostResource extends JsonResource
             'price' => $this->price,
             'loctype' => $this->loctype,
             'address' => $this->address,
+            'surface' => $this->surface,
             'img_path' => $this->img_path && !(str_starts_with($this->img_path, 'http')) ?
             Storage::url($this->img_path) : $this->img_path,
             'description' => $this->description,

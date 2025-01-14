@@ -27,6 +27,7 @@ class StorePostRequest extends FormRequest
         return [
             'city' => 'required|string|max:255',
             'price' => 'required|numeric',
+            'surface' => 'required|numeric',
             'loctype' => ['required',Rule::in(['Room', 'Studio', 'Apartment'])],
             'address' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg',

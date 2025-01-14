@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('loctype', ['Room', 'Studio','Apartment']);
             $table->string('city');
             $table->integer('price');
+            $table->string('surface');
             $table->text('address');
             $table->text('description')->nullable();
             $table->string('img_path');

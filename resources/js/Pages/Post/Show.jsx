@@ -1,17 +1,26 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react'
+import { Head , router } from '@inertiajs/react'
 import React from 'react'
 
  export default function Show ({auth,post}) {
-   console.log(post);
+
+    console.log("post",post);
+
+   const deleteproject=(post)=>{
+
+        if(!window.confirm("Are you sure you want to delete the post ?")){
+            return;
+        }
+        router.delete(route("post.destroy",post.data.id));
+   }
+
   return (
     <AuthenticatedLayout
                 user={auth.user}
-                
             >
       <Head title="Show" />
       <div className='bg-gradient-to-r from-sky-500 to-indigo-500 min-h-screen w-full h-full pt-24 '>
-                <div className='bg-white flex justify-between mx-auto w-[80%] rounded-lg shadow-lg py-8 px-8 mb-24'>
+                <div key={post.data.id} className='bg-white flex justify-between mx-auto w-[80%] rounded-lg shadow-lg py-8 px-8 mb-24'>
 
                     <div className='flex-col items-center'>
                     {/* Post Image */}
@@ -30,6 +39,10 @@ import React from 'react'
                                 <p className="flex items-center gap-2">
                                     <strong>City:</strong>
                                     <span>{post.data.city}</span>
+                                </p>
+                                <p className="flex items-center gap-2">
+                                    <strong>Surface:</strong>
+                                    <span>{post.data.surface} m²</span>
                                 </p>
                                 <p className="flex items-center gap-2">
                                     <strong>Address:</strong>
@@ -54,7 +67,21 @@ import React from 'react'
                                 <h2 className="text-2xl font-semibold mb-2">Description</h2>
                                 <p>{post.data.description}</p>
                             </div>
+
+                            {auth.user.id === post.data.createdBy.id && (
+                            <div className='flex justify-end mt-8 space-x-2'>
+                                <a href={route("post.edit", post.data.id)}>
+                                <button className='bg-green-600 text-white text-lg rounded-xl px-3 py-2'>
+                                Update
+                                </button>
+                                </a>
+                                <button onClick={(e) => deleteproject(post)} 
+                                className='bg-red-500 text-white text-lg rounded-xl px-3 py-2'>
+                                Delete
+                                </button>
                             </div>
+                            )}
+                        </div>
 
                      </div>
 

@@ -88,7 +88,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return inertia('Post/Edit', ['post' => new PostResource($post),]); // Pass the post to the Explore page
     }
 
     /**
@@ -100,7 +100,17 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $data = $request->validated();
+        if (isset($data['image'])) {
+            if ($post->img_path) {
+                Storage::disk('public')->deleteDirectory(dirname($post->img_path));
+            }
+            $image = $data['image'];
+            $data['img_path'] = $image->store('post/' . Str::random(), 'public');
+        }
+        $post->update($data);
+
+        return to_route('post.index');
     }
 
     /**
@@ -111,6 +121,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        if ($post->img_path) {
+            Storage::disk('public')->deleteDirectory(dirname($post->img_path));
+        }
+        return to_route('post.index');
     }
 }

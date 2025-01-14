@@ -13,6 +13,7 @@ class Post extends Model
         'price',
         'city',
         'loctype',
+        'surface',
         'address',
         'img_path',
         'description',

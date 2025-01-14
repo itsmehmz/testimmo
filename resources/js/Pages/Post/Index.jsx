@@ -84,25 +84,25 @@ export default function Index({ auth, posts, queryParams = null }) {
           </div>
         </div>
 
-        <div className="w-full h-full mt-10 grid grid-cols-4 px-12 gap-8 justify-center content-center pb-36">
+        <div className="w-full h-full mt-20 pl-[6.5rem] grid grid-cols-4 px-12 gap-8 justify-center content-center pb-36">
           {posts.data.length > 0 ? (
             posts.data.map((post) => (
               <div
                 key={post.id}
-                className="bg-white my-5 border border-gray-500 rounded-md h-[28rem] w-[20rem] transform transition-all duration-300 hover:scale-105"
+                className="bg-white my-5 border border-gray-500 rounded-md h-[22rem] w-[16rem] transform transition-all duration-300 hover:scale-105"
               >
                 <a href={route("post.show", post.id)}>
                 <div id="img" className="justify-center px-1 py-1">
                   <img
                     src={post.img_path}
                     alt="room"
-                    className="h-[18rem] w-[20rem]"
+                    className="h-[12.5rem] w-[15.5rem]"
                   />
                 </div>
                 </a>
 
-                <div className="flex space-x-1 bg-blue-800 w-[8rem] ml-2 py-1 rounded-full">
-                  <span className="text-3xl font-oswald pl-4 text-white">
+                <div className="flex space-x-1 bg-blue-800 w-[6.5rem] ml-2 py-1 rounded-full">
+                  <span className="text-2xl font-oswald pl-4 text-white">
                     {post.price}
                   </span>
                   <span className="pt-2 font-bold text-white">DH</span>
@@ -114,7 +114,7 @@ export default function Index({ auth, posts, queryParams = null }) {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="size-7"
+                    className="size-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -127,16 +127,17 @@ export default function Index({ auth, posts, queryParams = null }) {
                       d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                     />
                   </svg>
-                  <span className="font-oswald text-xl">{post.city}</span>
+                  <span className="font-oswald text-lg">{post.city}</span>
                 </div>
-                <div className="flex mt-3 ml-3 space-x-2">
+                <div className="flex mt-3 mx-3 justify-between">
+                  <div className='flex space-x-2'> 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="size-7"
+                    className="size-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -144,10 +145,11 @@ export default function Index({ auth, posts, queryParams = null }) {
                       d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
                     />
                   </svg>
-                  <span className="font-oswald text-xl">{post.loctype}</span>
+                  <span className="font-oswald text-lg">{post.loctype}</span>
+                  </div>
                   <div className="">
                     <a href={route("post.show", post.id)} className="flex">
-                      <span className="font-oswald text-xl ml-[135px]">
+                      <span className="font-oswald text-lg ml-[4rem]">
                         More
                       </span>
                       <svg
